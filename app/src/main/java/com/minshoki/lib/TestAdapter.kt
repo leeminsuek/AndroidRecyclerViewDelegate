@@ -2,6 +2,7 @@ package com.minshoki.lib
 
 import android.content.Context
 import android.support.v7.widget.RecyclerView
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.BaseAdapter
@@ -10,10 +11,15 @@ import com.lib.minshoki.recyclerviewdelegate.adapter.BaseRecyclerViewAdapter
 import com.lib.minshoki.recyclerviewdelegate.viewholder.BaseViewHolder
 
 class TestAdapter(context: Context) : BaseRecyclerViewAdapter(context) {
+    override fun registerViewType() {
+        register(TestVO::class.java, 2)
+        register(ListTestVo::class.java, 3)
+    }
+
     override fun onCreateView(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return when(viewType) {
-            1 -> VH1(parent)
-            2 -> VH2(parent)
+            2 -> VH1(parent)
+            3 -> VH2(parent)
             else -> null!!
         }
     }
@@ -26,10 +32,9 @@ class TestAdapter(context: Context) : BaseRecyclerViewAdapter(context) {
         }
     }
 
-    open class VH2(parent: ViewGroup): BaseViewHolder<TestVO>(R.layout.row_2, parent) {
-        override fun onViewBind(item: TestVO?) {
+    open class VH2(parent: ViewGroup): BaseViewHolder<ListTestVo>(R.layout.row_2, parent) {
+        override fun onViewBind(item: ListTestVo?) {
             with(itemView) {
-
             }
         }
     }

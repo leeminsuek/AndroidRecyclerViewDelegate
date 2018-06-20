@@ -5,10 +5,10 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.ViewGroup
 
-abstract class BaseViewHolder<in ITEM: Any>(
-        @LayoutRes layoutRes: Int,
+abstract class BaseViewHolder<in ITEM : Any>(
+        @LayoutRes layoutRes: Int = 0,
         parent: ViewGroup?
-): RecyclerView.ViewHolder(LayoutInflater.from(parent?.context).inflate(layoutRes, parent, false)) {
+) : RecyclerView.ViewHolder(LayoutInflater.from(parent?.context).inflate(layoutRes, parent, false)) {
     var context = parent?.context
 
     fun onBind(item: Any?) {
